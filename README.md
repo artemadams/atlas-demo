@@ -66,9 +66,7 @@ exports = function (changeEvent) {
 __Trigger Test__
 
 ```javascript
-{
-    "title": "Blacksmith Scene"
-}
+{ "title": "Blacksmith Scene" }
 ```
 
 __Add Document__
@@ -100,9 +98,13 @@ __Custom Rule__
 
 __Add User__
 
+Email example:
 ```javascript
-email: alice@example.com
-pass: PASSWORD
+alice@example.com
+```
+Password example:
+```javascript
+PASSWORD
 ```
 
 __Test API__
