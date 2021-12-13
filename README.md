@@ -129,7 +129,7 @@ mutation {
     data: {
       movie_id: "573a1390f29313caabcd4135"
       email: "alice@example.com"
-      text: "What a great film! Sent from mflix mobile"
+      text: "What a great film indeed! Sent from mflix mobile"
     }
   ) {
     _id
