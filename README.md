@@ -52,7 +52,7 @@ exports = function (changeEvent) {
     const docId = changeEvent.documentKey._id;
     const relatedMovieId = fullDocument.movie_id;
     console.log('New comment doc inserted for Movie: ' + relatedMovieId);
-    const collection = context.services.get("demo").db("sample_mflix").collection("movies");
+    const collection = context.services.get("Cluster0").db("sample_mflix").collection("movies");
     const doc = collection.updateOne({
         _id: relatedMovieId
     }, {
