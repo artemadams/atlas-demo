@@ -87,3 +87,54 @@ Note: `movie_id` matches the `_id` of “Blacksmith Scene" movie. If you selecte
     "date": "2020-09-09T12:00:00.000+00:00"
 }
 ```
+
+## Atlas Realm Auth & GraphQL
+
+__Custom Rule__
+
+```javascript
+{
+    "email" : "%%user.data.email"
+}
+```
+
+__Add User__
+
+```javascript
+email: alice@example.com
+pass: PASSWORD
+```
+
+__Test API__
+
+Note: `movie_id` matches the `_id` of “Blacksmith Scene" movie. If you selected another movie for this exercise make sure you use its `_id`.
+The URL contains `eu-central-1` which depends on the region you selected when creating the Atlas cluster and Realm application. `application-0-yourappid` needs also to represent the id of your Realm app.
+
+cURL:
+```bash
+curl --location --request POST 'https://eu-central-1.aws.realm.mongodb.com/api/client/v2.0/app/application-0-yourappid/graphql' \
+--header 'email: alice@example.com' \
+--header 'password: PASSWORD' \
+--header 'Content-Type: application/json' \
+--data-raw '{"query":"mutation {\n  insertOneComment(\n    data: {\n      movie_id: \"573a1390f29313caabcd4135\"\n      email: \"alice@example.com\"\n      text: \"What a great film!\"\n    }\n  ) {\n    _id\n    text\n  }\n}","variables":{}}'
+
+```
+
+Query for GraphQL clients:
+```javascript
+mutation {
+  insertOneComment(
+    data: {
+      movie_id: "573a1390f29313caabcd4135"
+      email: "alice@example.com"
+      text: "What a great film! test"
+    }
+  ) {
+    _id
+    text
+  }
+}
+```
+
+
+
